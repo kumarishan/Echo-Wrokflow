@@ -12,28 +12,35 @@ in a workflow : Start Stage and the End Stage. The parallel threads of the workf
 the End Stage. 
              
 And example stage...
-
-             /--------> [Stage 1.1] ---- > [Stage 1.2]----------\
+<pre>
+             /--------> [Stage 1.1] ---- > [Stage 1.2]----------\  
 [Start Stage] ---------- > [Stage 2.1] ----- > [Stage 2.2]---- >[End Stage]
 
+</pre>
 
 While constructing each stage is provided the parent stage and the next stage in the workflow
 
 - Workflow will contain four types of stages apart form default End and Start stage
-    - Simple Stage
-      ----> [Stage] ---- > 
+    - Simple Stage  
+      <pre> ----> [Stage] ---- >  </pre>
 	
-	- Threaded Stage
-	               /-----> [Thread1] ---\
+	- Threaded Stage  
+          <pre>
+	                 /-----> [Thread1] ---\
 	  -----> [Stage] ---> [Thread 2] ---> [Aggregator] --- >
-	  
-	- Remote Service Stage
-	  -----> [Stage] ----> [Remote Service Accessor] ---->
-	
-	- Encapsulated Workflow Stage
-	                                                   /--------> [Stage 1.1] ---- > [Stage 1.2]----------\
-      ------> [Stage] ---> [Workflow] ---> [Start Stage] ---------- > [Stage 2.1] ----- > [Stage 2.2]---- >[End Stage] ---> [Workflow Manager] ----->
-	  
+	  </pre>
+
+	- Remote Service Stage  
+          <pre>
+          -----> [Stage] ----> [Remote Service Accessor] ---->
+	  </pre>
+
+	- Encapsulated Workflow Stage  
+          <pre>
+	                                                             /--------> [Stage 1.1] ---- > [Stage 1.2]----------\
+          ------> [Stage] ---> [Workflow Manager] ---> [Start Stage] ---------- > [Stage 2.1] ----- > [Stage 2.2]---- >[End Stage] ---> [Workflow Manager] ----->
+	  </pre>
+
 - Whenever a stage is given the pointer to the End stage then it keeps in itself the track of all the stages from where it will end to this stage.
 
 
